@@ -1,9 +1,22 @@
 package fr.projet.perso.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Commande implements Serializable {
 
 	/**
@@ -11,11 +24,17 @@ public class Commande implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Float prixTotal;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "client_id")
 	private Client client;
 	private String moyenPaiement;
+	
+	@OneToMany(mappedBy = "commande", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Map<Integer, Selection> listeSelections;
 	
 	private transient Panier panier;
@@ -27,7 +46,7 @@ public class Commande implements Serializable {
 	public int getId() {
 		return id;
 	}
-
+	
 	public void setId(int id) {
 		this.id = id;
 	}

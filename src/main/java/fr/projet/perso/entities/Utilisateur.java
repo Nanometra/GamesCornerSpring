@@ -5,6 +5,26 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Lob;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.annotations.Type;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "discriminant", discriminatorType = DiscriminatorType.STRING)
 public abstract class Utilisateur implements Serializable {
 
 	/**
@@ -12,16 +32,30 @@ public abstract class Utilisateur implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected int id;
 	
+	@NotNull(message = "Veuillez saisir un nom")
 	protected String nom;
+	
 	protected String prenom;
 	protected int age;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date dateDeNaissance;
 	protected String pseudo;
 	protected Coordonnees coordonnees;
+	
+	@NotNull(message = "Veuillez entrer un mot de passe")
+	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*$@%_])([-+!*$@%_\\w]{8,15})$")
 	protected String motDePasse;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(unique = true, nullable = false)
 	protected Date dateInscription;
+	
+	@Lob
+	@Type(type = "org.hibernate.type.BinaryType")
 	protected byte[] imageProfil;
 	
 	protected boolean actif;
