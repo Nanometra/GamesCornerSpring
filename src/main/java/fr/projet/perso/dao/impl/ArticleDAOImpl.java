@@ -2,14 +2,17 @@ package fr.projet.perso.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import fr.projet.perso.dao.IArticleDAO;
 import fr.projet.perso.entities.Article;
 
+@Repository
 public class ArticleDAOImpl implements IArticleDAO {
 
 	@Override
 	public Article findById(Long id) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

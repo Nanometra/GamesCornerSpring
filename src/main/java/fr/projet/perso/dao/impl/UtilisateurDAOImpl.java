@@ -2,9 +2,12 @@ package fr.projet.perso.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import fr.projet.perso.dao.IUtilisateurDAO;
 import fr.projet.perso.entities.Utilisateur;
 
+@Repository
 public class UtilisateurDAOImpl implements IUtilisateurDAO {
 
 	@Override

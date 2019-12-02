@@ -2,9 +2,12 @@ package fr.projet.perso.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import fr.projet.perso.dao.IClientDAO;
 import fr.projet.perso.entities.Client;
 
+@Repository
 public class ClientDAOImpl implements IClientDAO {
 
 	@Override

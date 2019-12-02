@@ -2,9 +2,12 @@ package fr.projet.perso.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import fr.projet.perso.dao.ISelectionDAO;
 import fr.projet.perso.entities.Selection;
 
+@Repository
 public class SelectionDAOImpl implements ISelectionDAO {
 
 	@Override

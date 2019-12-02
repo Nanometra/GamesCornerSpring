@@ -2,9 +2,12 @@ package fr.projet.perso.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import fr.projet.perso.dao.ICommandeDAO;
 import fr.projet.perso.entities.Commande;
 
+@Repository
 public class CommandeDAOImpl implements ICommandeDAO {
 
 	@Override
