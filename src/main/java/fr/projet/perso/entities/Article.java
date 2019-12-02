@@ -30,7 +30,7 @@ public abstract class Article implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected int id;
+	protected Long id;
 	protected String description;
 	protected Float prix;
 	protected String etat;
@@ -49,14 +49,6 @@ public abstract class Article implements Serializable {
 
 	public Article() {
 		super();
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getDescription() {

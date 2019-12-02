@@ -5,16 +5,19 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -31,39 +34,41 @@ public abstract class Utilisateur implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected int id;
-	
+	protected Long id;
+
 	@NotNull(message = "Veuillez saisir un nom")
 	protected String nom;
-	
+
 	protected String prenom;
 	protected int age;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date dateDeNaissance;
 	protected String pseudo;
+
+	@OneToOne(mappedBy = "utilisateur", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
 	protected Coordonnees coordonnees;
-	
+
 	@NotNull(message = "Veuillez entrer un mot de passe")
 	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*$@%_])([-+!*$@%_\\w]{8,15})$")
 	protected String motDePasse;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(unique = true, nullable = false)
 	protected Date dateInscription;
-	
+
 	@Lob
 	@Type(type = "org.hibernate.type.BinaryType")
 	protected byte[] imageProfil;
-	
+
 	protected boolean actif;
 	protected boolean vendeur;
 	protected boolean admin;
-	
+
 	private final String FORMAT_DATE = "dd MM yyyy";
-	
+
 	public Utilisateur() {
 		super();
 	}
@@ -116,12 +121,16 @@ public abstract class Utilisateur implements Serializable {
 		this.motDePasse = motDePasse;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	public Date getDateInscription() {
@@ -171,12 +180,12 @@ public abstract class Utilisateur implements Serializable {
 	public int getAge() {
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat(FORMAT_DATE);
-		
+
 		format.format(date);
 		format.format(this.dateDeNaissance);
-		
+
 		long diff = date.getTime() - this.dateDeNaissance.getTime();
-		return (int) ((date.getTime() - this.dateDeNaissance.getTime()) / (24*62*62*1000));
+		return (int) ((date.getTime() - this.dateDeNaissance.getTime()) / (24 * 62 * 62 * 1000));
 	}
 
 	@Override
@@ -186,5 +195,5 @@ public abstract class Utilisateur implements Serializable {
 				+ ", dateInscription=" + dateInscription + ", imageProfil=" + Arrays.toString(imageProfil) + ", actif="
 				+ actif + ", vendeur=" + vendeur + ", admin=" + admin + ", FORMAT_DATE=" + FORMAT_DATE + "]";
 	}
-		
+
 }

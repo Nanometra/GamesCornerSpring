@@ -23,31 +23,31 @@ public class Commande implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private Float prixTotal;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "client_id")
 	private Client client;
 	private String moyenPaiement;
-	
+
 	@OneToMany(mappedBy = "commande", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Map<Integer, Selection> listeSelections;
-	
+
 	private transient Panier panier;
 
 	public Commande() {
 		super();
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	
-	public void setId(int id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -96,5 +96,5 @@ public class Commande implements Serializable {
 		return "Commande [id=" + id + ", prixTotal=" + prixTotal + ", client=" + client + ", moyenPaiement="
 				+ moyenPaiement + ", listeSelections=" + listeSelections + "]";
 	}
-	
+
 }

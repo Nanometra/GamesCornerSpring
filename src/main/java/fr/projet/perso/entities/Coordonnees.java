@@ -3,11 +3,13 @@ package fr.projet.perso.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -18,21 +20,40 @@ public class Coordonnees implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected int id;
-	
+	protected Long id;
+
 	private String adresse;
 	private int codePostal;
 	private int numeroRue;
 	private String numeroBatiment;
 	private String numeroTelephoneMobile;
 	private String numeroTelephoneFixe;
-	
+
+	@OneToOne(fetch = FetchType.LAZY)
+	private Utilisateur utilisateur;
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
 	@NotNull
 	private String mail;
-	
+
 	public Coordonnees() {
 		super();
 	}
@@ -92,5 +113,5 @@ public class Coordonnees implements Serializable {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	
+
 }
