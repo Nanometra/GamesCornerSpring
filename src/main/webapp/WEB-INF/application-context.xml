@@ -18,6 +18,10 @@
 	
 	<!-- Permet au Dispatcher Servlet de récupérer les requêtes des controllers  -->
 	<mvc:annotation-driven />
+	
+	<!-- Permet de supporter les ressources web (images, js, css, ...) -->
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
+	
 	<!-- Enregisre les beans dans le contexte et scanne les annotations des beans pour les activer -->
 	<context:component-scan
 		base-package="fr.projet.perso" />
