@@ -4,32 +4,32 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import fr.projet.perso.dao.IClientDAO;
-import fr.projet.perso.entities.Client;
+import fr.projet.perso.dao.ICoordonneesDAO;
+import fr.projet.perso.entities.Coordonnees;
 
 @Repository
-public class ClientDAOImpl extends AbstractDAO<Client> implements IClientDAO {
+public class CoordonneesDAOImpl extends AbstractDAO<Coordonnees> implements ICoordonneesDAO {
 
 	@Override
-	public Client findById(Long id) {
+	public Coordonnees findById(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Client> findAll() {
+	public List<Coordonnees> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void add(Client client) {
+	public void add(Coordonnees coordonnees) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void update(Client clientt) {
+	public void update(Coordonnees coordonnees) {
 		// TODO Auto-generated method stub
 
 	}
@@ -41,7 +41,7 @@ public class ClientDAOImpl extends AbstractDAO<Client> implements IClientDAO {
 	}
 
 	@Override
-	public void remove(Client t) {
+	public void remove(Coordonnees t) {
 		// TODO Auto-generated method stub
 		
 	}

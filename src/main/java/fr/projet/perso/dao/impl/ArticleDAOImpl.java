@@ -8,7 +8,7 @@ import fr.projet.perso.dao.IArticleDAO;
 import fr.projet.perso.entities.Article;
 
 @Repository
-public class ArticleDAOImpl implements IArticleDAO {
+public class ArticleDAOImpl extends AbstractDAO<Article> implements IArticleDAO {
 
 	@Override
 	public Article findById(Long id) {
@@ -38,6 +38,12 @@ public class ArticleDAOImpl implements IArticleDAO {
 	public void removeById(Long id) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void remove(Article t) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -8,7 +8,7 @@ import fr.projet.perso.dao.IUtilisateurDAO;
 import fr.projet.perso.entities.Utilisateur;
 
 @Repository
-public class UtilisateurDAOImpl implements IUtilisateurDAO {
+public class UtilisateurDAOImpl extends AbstractDAO<Utilisateur> implements IUtilisateurDAO {
 
 	@Override
 	public Utilisateur findById(Long id) {
@@ -38,6 +38,12 @@ public class UtilisateurDAOImpl implements IUtilisateurDAO {
 	public void removeById(Long id) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void remove(Utilisateur t) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

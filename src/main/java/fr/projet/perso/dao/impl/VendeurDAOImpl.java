@@ -8,7 +8,7 @@ import fr.projet.perso.dao.IVendeurDAO;
 import fr.projet.perso.entities.Vendeur;
 
 @Repository
-public class VendeurDAOImpl implements IVendeurDAO {
+public class VendeurDAOImpl extends AbstractDAO<Vendeur> implements IVendeurDAO {
 
 	@Override
 	public Vendeur findById(Long id) {
@@ -38,6 +38,12 @@ public class VendeurDAOImpl implements IVendeurDAO {
 	public void removeById(Long id) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void remove(Vendeur t) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

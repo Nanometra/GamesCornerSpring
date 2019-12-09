@@ -8,7 +8,7 @@ import fr.projet.perso.dao.ICommandeDAO;
 import fr.projet.perso.entities.Commande;
 
 @Repository
-public class CommandeDAOImpl implements ICommandeDAO {
+public class CommandeDAOImpl extends AbstractDAO<Commande> implements ICommandeDAO {
 
 	@Override
 	public Commande findById(Long id) {
@@ -38,6 +38,12 @@ public class CommandeDAOImpl implements ICommandeDAO {
 	public void removeById(Long id) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void remove(Commande t) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

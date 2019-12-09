@@ -8,7 +8,7 @@ import fr.projet.perso.dao.ISelectionDAO;
 import fr.projet.perso.entities.Selection;
 
 @Repository
-public class SelectionDAOImpl implements ISelectionDAO {
+public class SelectionDAOImpl extends AbstractDAO<Selection> implements ISelectionDAO {
 
 	@Override
 	public Selection findById(Long id) {
@@ -38,6 +38,12 @@ public class SelectionDAOImpl implements ISelectionDAO {
 	public void removeById(Long id) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void remove(Selection t) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
