@@ -27,7 +27,7 @@
 		<postgresql.version>42.2.5</postgresql.version>
 		<commons.logging.version>1.2</commons.logging.version>
 		<hibernate.core.version>5.4.7.Final</hibernate.core.version>
-		<hibernate.validator.version>6.1.0.Final</hibernate.validator.version>
+		<hibernate.validator.version>6.1.5.Final</hibernate.validator.version>
 		<hibernate.search-orm.version>5.11.3.Final</hibernate.search-orm.version>
 		<javaee-api.version>8.0.1</javaee-api.version>
 		<hibernate-jpa.version>1.0.2.Final</hibernate-jpa.version>
